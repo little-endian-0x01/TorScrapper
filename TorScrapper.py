@@ -10,10 +10,10 @@ with open("onions.txt", "r") as onion:
 
 #Terminal Process (Only for Gnome at the moment).
 def Execute(url):
-    execute = str('gnome-terminal -e \' python3 Scrape.py ' + url + '\'')
+    execute = str('gnome-terminal -e \' python3 Modules/Scrape.py ' + url + '\'')
     os.system(execute)
 
-#MultiPrcessing Implementation (Limit - 5 proesses at a time).
+#MultiPrcessing Implementation (Limit - 5 processes at a time).
 if __name__ == '__main__':
     with Pool(processes=5) as pool:
         for onion in range(0, len(content)):

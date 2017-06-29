@@ -5,7 +5,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import socket
 import socks
-import sys, os
+import sys,re
 
 #Importing Stem libraries
 from stem import Signal
@@ -32,10 +32,8 @@ socket.getaddrinfo = getaddrinfo
 #######################################################################################################################
 #######################################################################################################################
 #######################################################################################################################
-#######################################################################################################################
-#######################################################################################################################
 
-#Scrapping Onion links
+#Scrapping Onion links.
 def Scrape(url):
     timeout = 10
     socket.setdefaulttimeout(timeout)
@@ -44,12 +42,17 @@ def Scrape(url):
     req = urllib.request.Request(url,None,headers)
     response = urllib.request.urlopen(req)
 
-    #Using BeautifulSoup to parse html object reponse.
+    #Using BeautifulSoup to parse html object response.
     page = BeautifulSoup(response.read(),'html.parser')
-    print (page.find_all('strong'))
-    print (page)
 
-# Taking input
+    #Saving output
+    token = re.sub(r'[^\w]', '', url)
+    name = 'Scraped-' + token +'.html'
+    file = open(name,'w')
+    file.write(str(page))
+    file.close()
+
+# Taking input.
 if __name__=='__main__':
     if (len(sys.argv)==2):
         url=sys.argv[1]
