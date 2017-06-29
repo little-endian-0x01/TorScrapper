@@ -1,0 +1,46 @@
+#Author - Shivam Kapoor (ConanKapoor)
+
+#Importing Essentials
+import urllib.request
+from bs4 import BeautifulSoup
+import socket
+import socks
+
+#Importing Stem libraries
+from stem import Signal
+from stem.control import Controller
+
+#Initiating Connection
+with Controller.from_port(port=9051) as controller:
+    controller.authenticate("16:AE80E3930E42F7A3606823FA19CD0A3E721813EF8798ABFE86DB91DD09")
+    controller.signal(Signal.NEWNYM)
+
+# TOR SETUP GLOBAL Vars
+SOCKS_PORT = 9050  # TOR proxy port that is default from torrc, change to whatever torrc is configured to
+socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", SOCKS_PORT)
+socket.socket = socks.socksocket
+
+
+# Perform DNS resolution through the socket
+def getaddrinfo(*args):
+    return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (args[0], args[1]))]
+
+
+socket.getaddrinfo = getaddrinfo
+
+#Scrapping Onion links
+def Scrape(site):
+
+ timeout = 10
+ socket.setdefaulttimeout(timeout)
+
+ headers = {'User-Agent': 'TorScrapper - Onion scrapper | github.com/ConanKapoor/TorScrapper.git' }
+ req = urllib.request.Request(site,None,headers)
+ response = urllib.request.urlopen(req)
+
+ #Using BeautifulSoup to parse html object reponse.
+ page = BeautifulSoup(response.read(),'html.parser')
+ print (page.find_all('strong'))
+ print (page)
+
+Scrape("http://torlinkbgs6aabns.onion/")
