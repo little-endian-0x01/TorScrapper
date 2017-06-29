@@ -47,7 +47,7 @@ def Scrape(url):
 
     #Saving output
     token = re.sub(r'[^\w]', '', url)
-    name = 'Scraped-' + token +'.html'
+    name = 'Output/Scraped-' + token +'.html'
     file = open(name,'w')
     file.write(str(page))
     file.close()
