@@ -15,6 +15,11 @@ def Execute(url):
 
 #MultiPrcessing Implementation (Limit - 5 processes at a time).
 if __name__ == '__main__':
+    if (os.path.exists("Output")):
+        delete = str('rm -r Output')
+        os.system(delete)
+    else:
+        os.makedirs("Output")
     with Pool(processes=5) as pool:
         for onion in range(0, len(content)):
             pool.apply(Execute, args=(content[onion],))
