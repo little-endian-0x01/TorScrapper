@@ -5,6 +5,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import socket
 import socks
+import sys, os
 
 #Importing Stem libraries
 from stem import Signal
@@ -28,19 +29,30 @@ def getaddrinfo(*args):
 
 socket.getaddrinfo = getaddrinfo
 
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+#######################################################################################################################
+
 #Scrapping Onion links
-def Scrape(site):
+def Scrape(url):
+    timeout = 10
+    socket.setdefaulttimeout(timeout)
 
- timeout = 10
- socket.setdefaulttimeout(timeout)
+    headers = {'User-Agent': 'TorScrapper - Onion scrapper | github.com/ConanKapoor/TorScrapper.git' }
+    req = urllib.request.Request(url,None,headers)
+    response = urllib.request.urlopen(req)
 
- headers = {'User-Agent': 'TorScrapper - Onion scrapper | github.com/ConanKapoor/TorScrapper.git' }
- req = urllib.request.Request(site,None,headers)
- response = urllib.request.urlopen(req)
+    #Using BeautifulSoup to parse html object reponse.
+    page = BeautifulSoup(response.read(),'html.parser')
+    print (page.find_all('strong'))
+    print (page)
 
- #Using BeautifulSoup to parse html object reponse.
- page = BeautifulSoup(response.read(),'html.parser')
- print (page.find_all('strong'))
- print (page)
-
-Scrape("http://torlinkbgs6aabns.onion/")
+# Taking input
+if __name__=='__main__':
+    if (len(sys.argv)==2):
+        url=sys.argv[1]
+        Scrape(url)
+    else:
+        print("Invalid input")
