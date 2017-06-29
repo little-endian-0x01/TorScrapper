@@ -5,7 +5,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import socket
 import socks
-import sys,re
+import sys,re,os
 
 #Importing Stem libraries
 from stem import Signal
@@ -38,6 +38,7 @@ def Scrape(url):
     timeout = 10
     socket.setdefaulttimeout(timeout)
 
+    #Collecting html content.
     headers = {'User-Agent': 'TorScrapper - Onion scrapper | github.com/ConanKapoor/TorScrapper.git' }
     req = urllib.request.Request(url,None,headers)
     response = urllib.request.urlopen(req)
@@ -47,7 +48,7 @@ def Scrape(url):
 
     #Saving output
     token = re.sub(r'[^\w]', '', url)
-    name = 'Output/Scraped-' + token +'.html'
+    name = os.path.abspath("") + '/Output/Scraped-' + token +'.html'
     file = open(name,'w')
     file.write(str(page))
     file.close()
