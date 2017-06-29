@@ -1,5 +1,5 @@
 # TorScrapper
-A basic scrapper made in python with BeautifulSoup to - 
+A basic scrapper made in python with BeautifulSoup and Tor support to - 
 
 * Scrape Onion and normal links.
 * Save the output in html format in Output folder.
@@ -12,13 +12,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need Python3 to run this project smoothly. Go to your terminal and execute the following command or visit [Python3](https://www.python.org/download/releases/3.0/) website.
+* You will need Python3 to run this project smoothly. Go to your terminal and execute the following command or visit [Python3](https://www.python.org/download/releases/3.0/) website.
 
 ```
 [sudo] apt-get install python3 python3-dev
 ```
 
-Furthermore install the requirements.txt using pip3 - 
+* You can install Tor by going to their website - https://www.torproject.org/
+
+* Furthermore install the requirements.txt using pip3 - 
 
 ```
 [sudo] pip3 install -r requirements.txt
@@ -59,6 +61,7 @@ A step by step series of examples that tells what you have to do to get this pro
 ## Built With
 
 * [Python](https://www.python.org/) - Python programming language.
+* [Tor](https://www.torproject.org/) - If you don't know about Tor then you probably shuldn't be here :)
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Beautiful Soup is a Python library for pulling data out of HTML and XML files.
 
 ## Contributing
