@@ -12,21 +12,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-* You will need Python3 to run this project smoothly. Go to your terminal and execute the following command or visit [Python3](https://www.python.org/download/releases/3.0/) website.
+* You will need **Python3** to run this project smoothly. Go to your terminal and execute the following command or visit [Python3](https://www.python.org/download/releases/3.0/) website.
 
 ```
 [sudo] apt-get install python3 python3-dev
 ```
 
-* You can install Tor by going to their website - https://www.torproject.org/
+* You can install **Tor** by going to their website - https://www.torproject.org/
 
-* Furthermore install the requirements.txt using pip3 - 
+* Furthermore install the **requirements.txt** using pip3 - 
 
 ```
 [sudo] pip3 install -r requirements.txt
 ```
 
-TL;DR: We recommend installing TorScrapper inside a virtual environment on all platforms.
+TL;DR: We recommend installing TorScrapper inside a **virtual environment** on all platforms.
 
 Python packages can be installed either globally (a.k.a system wide), or in user-space. We do not recommend installing TorScrapper system wide.
 
@@ -37,6 +37,24 @@ To get started with virtual environments, see virtualenv installation instructio
 ```
 [sudo] pip install virtualenv
 ```
+## Basic setup
+Before you run the torBot make sure the following things are done properly:
+
+* Run tor service
+`sudo service tor start`
+
+* Set a password for tor
+`tor --hash-password "my_password" `
+
+* Give the password inside /Modules/Scrape.py
+`from stem.control import Controller
+with Controller.from_port(port = 9051) as controller:
+ controller.authenticate("your_password_hash")
+ controller.signal(Signal.NEWNYM)`
+
+* Go to /etc/tor/torrc and uncomment - _**ControlPort 9051**_
+
+Read more about torrc here : [Torrc](https://github.com/ConanKapoor/TorScrapper/blob/master/Tor.md)
 
 ### Deployment
 
@@ -61,12 +79,12 @@ A step by step series of examples that tells what you have to do to get this pro
 ## Built With
 
 * [Python](https://www.python.org/) - Python programming language.
-* [Tor](https://www.torproject.org/) - If you don't know about Tor then you probably shuldn't be here :)
+* [Tor](https://www.torproject.org/) - If you don't know about Tor then you probably shouldn't be here :)
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Beautiful Soup is a Python library for pulling data out of HTML and XML files.
 
 ## Contributing
 
-If you want to contribute to this project, for some reason I won't understand, then you can create a pull request. Happy Coding!
+If you have new ideas which is worth implementing, mention those by starting a new issue with the title [FEATURE_REQUEST]. If the idea is worth implementing, congratz you are now a contributor.
 
 ## Versioning
 
