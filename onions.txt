@@ -1,6 +1,1 @@
 http://torlinkbgs6aabns.onion/
-https://www.iocbucket.com/search
-https://www.iocbucket.com/feeds/rss2/openioc/1.0/latestten
-https://www.iocbucket.com/feeds/rss2/openioc/1.1/latestten
-https://www.iocbucket.com/feeds/rss2/yara/latestten
-https://www.metaflows.com/codeigniter/stats/content_md5_hash/

@@ -10,7 +10,7 @@ with open("onions.txt", "r") as onion:
 
 #Terminal Process (Only for Gnome at the moment).
 def Execute(url):
-    execute = str('gnome-terminal -e \' python3 Modules/Scraper/Scrape.py ' + url + '\'')
+    execute = str('gnome-terminal -e \' python3 Modules/Crawler/main.py ' + url + '\'')
     os.system(execute)
 
 #MultiPrcessing Implementation (Limit - 5 processes at a time).
