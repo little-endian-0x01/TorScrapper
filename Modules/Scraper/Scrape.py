@@ -3,13 +3,16 @@
 #Importing Essentials
 import urllib.request
 from bs4 import BeautifulSoup
-import socket
-import socks
 import sys,re,os
+
+#######################################################################################################################
+################################################ TOR CONNECTION BELOW #################################################
+#######################################################################################################################
 
 #Importing Stem libraries
 from stem import Signal
 from stem.control import Controller
+import socks, socket
 
 #Initiating Connection
 with Controller.from_port(port=9051) as controller:
@@ -21,11 +24,9 @@ SOCKS_PORT = 9050  # TOR proxy port that is default from torrc, change to whatev
 socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", SOCKS_PORT)
 socket.socket = socks.socksocket
 
-
 # Perform DNS resolution through the socket
 def getaddrinfo(*args):
     return [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (args[0], args[1]))]
-
 
 socket.getaddrinfo = getaddrinfo
 

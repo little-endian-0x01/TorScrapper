@@ -22,7 +22,7 @@ if __name__ == '__main__':
     else:
         os.makedirs("Output")
 
-    with Pool(processes=5) as pool:
+    with Pool(processes = 5) as pool:
         for onion in range(0, len(content)):
             pool.apply(Execute, args=(content[onion],))
 
