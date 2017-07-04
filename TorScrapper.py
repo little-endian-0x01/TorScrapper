@@ -56,24 +56,32 @@ def Menu():
     print ("----> 1) Edit Onions.txt to add links.")
     print ("----> 2) Crawl given links :].")
     print ("----> 3) Scrape given links :].")
-    print ("----> 4) Compare latest crawl and scrape the latest links.\n")
+    print ("----> 4) Compare latest crawl and scrape the latest links.")
+    print ("----> 5) Exit the program :[.\n")
 
 if __name__ == '__main__':
+    die =1
     try:
-        Banner()
-        Menu()
-        choice = int(input("Enter your choice: "))
+        while(die):
+            os.system("clear")
+            Banner()
+            Menu()
+            choice = int(input("Enter your choice: "))
+            print("\n")
 
-        if choice == 1:
-            ExecuteEditor()
-        elif choice == 2:
-            Multiprocessing(ExecuteCrawler)
-        elif choice == 3:
-            Multiprocessing(ExecuteScraper)
-        else:
-            ExecuteDiff()
+            if choice == 1:
+                ExecuteEditor()
+            elif choice == 2:
+                Multiprocessing(ExecuteCrawler)
+            elif choice == 3:
+                Multiprocessing(ExecuteScraper)
+            elif choice == 4:
+                ExecuteDiff()
+            else:
+                die = 0
+                quit()
 
     except KeyboardInterrupt:
-        print("Interrupt received! Exiting cleanly...")
+        print("\n\nInterrupt received! Exiting cleanly...\n")
 
 
