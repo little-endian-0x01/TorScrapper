@@ -21,7 +21,8 @@ def ExecuteCrawler(url):
 
 # Terminal Process for Scraper (Only for Gnome at the moment).
 def ExecuteScraper(url):
-    execute = str('gnome-terminal -e \' python3 Modules/Scraper/scrape.py ' + url + '\'')
+    execute = str('gnome-terminal -e \'python3 Modules/Scraper/Scrape.py ' + url + '\'')
+    print (execute)
     os.system(execute)
 
 # Terminal Process for Scraping latest links. (Under Construction)
@@ -58,17 +59,21 @@ def Menu():
     print ("----> 4) Compare latest crawl and scrape the latest links.\n")
 
 if __name__ == '__main__':
-    Banner()
-    Menu()
-    choice = int(input("Enter your choice: "))
+    try:
+        Banner()
+        Menu()
+        choice = int(input("Enter your choice: "))
 
-    if choice == 1:
-        ExecuteEditor()
-    elif choice == 2:
-        Multiprocessing(ExecuteCrawler)
-    elif choice == 3:
-        Multiprocessing(ExecuteScraper)
-    else:
-        ExecuteDiff()
+        if choice == 1:
+            ExecuteEditor()
+        elif choice == 2:
+            Multiprocessing(ExecuteCrawler)
+        elif choice == 3:
+            Multiprocessing(ExecuteScraper)
+        else:
+            ExecuteDiff()
+
+    except KeyboardInterrupt:
+        print("Interrupt received! Exiting cleanly...")
 
 
