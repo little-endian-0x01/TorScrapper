@@ -1,4 +1,4 @@
-# Author - Shivam Kapoor (ConanKapoor)
+# Author - Shivam Kapoor (ConanKapoor).
 
 # Importing Essentials
 from multiprocessing import Pool
